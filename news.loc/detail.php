@@ -1,16 +1,11 @@
 <?php
-$id = $_GET['id'];
 
 include ('db.php');
 
+    $id = $_GET['id'];
+    $query = "SELECT * FROM news WHERE id = $id";
+    $result = mysqli_query($connection, $query);
+    $row = mysqli_fetch_assoc($result);
 
-$query1 = 'SELECT * FROM news WHERE text = $id';
-$result1 = mysqli_query($connection, $query1);
-$row1 = mysqli_fetch_array($result1);
-
-while ($row1 = mysqli_fetch_array($result1)) {
-
- echo $row1['text'];
-}
-
-?>
+    echo $row['text'];
+   ?>

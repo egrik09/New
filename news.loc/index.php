@@ -9,7 +9,7 @@ mysqli_close();
 
 while ($row = mysqli_fetch_array($result)) {
 
-    echo '<a href="detail.php?id' .$row['id']. '">';
+    echo '<a href="detail.php?id=' .$row['id']. '">';
     echo $row['tittle'] . '<br>';
 }
 
