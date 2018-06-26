@@ -1,6 +1,6 @@
 <?php
 
-include_once 'db.php';
+include_once 'connect/db.php';
 
     $id = (int) $_GET['id'];
     $query = "SELECT * FROM news WHERE id = $id";

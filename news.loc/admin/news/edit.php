@@ -2,6 +2,8 @@
 <html>
 <head><title>Редактирование новости</title></head>
 <body>
+
+
 <?php
 session_start();
 
@@ -19,6 +21,7 @@ if (isset($_POST['save'])){
     mysqli_query($connection, "UPDATE news SET tittle='$tittle',text='$text' WHERE id = '$id'");
 
     mysqli_close($connection);
+
 }
 
 ?>
@@ -35,7 +38,12 @@ if (isset($_POST['save'])){
 
     <input type="submit" name="save" value="Сохранить"/>
 </form>
+<?php
+if (isset($_POST['save'])){
 
+    echo "Новость исправлена";
+}
+?>
 
 </body>
 </html>

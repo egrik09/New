@@ -3,10 +3,9 @@
 <head></head>
 <body>
 
-<a href="admin/news/add.php"> Добавить новости</a> </<br>
 <?php
 
-include_once 'db.php';
+include_once 'connect/db.php';
 
 $query = 'SELECT * FROM news ORDER BY id DESC';
 $result = mysqli_query($connection, $query);
@@ -17,8 +16,6 @@ while ($row = mysqli_fetch_array($result)) {
 ?>
  <h1><?php echo '<a href="detail.php?id=' .$row['id']. '">';?></h1>
     <?php echo $row['tittle'] . '<br>';?>
-    <a href = 'admin/news/edit.php?id=<?php echo $row['id']?>'>Редактировать новость</a>
-    <a href = 'admin/news/delete.php?id=<?php echo $row['id']?>'>Удалить новость</a>
     <hr/>
 <?php } ?>
 
