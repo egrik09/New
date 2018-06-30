@@ -10,7 +10,7 @@ session_start();
 $connection = mysqli_connect('localhost','root','root','1234', '3308');
 $db = mysqli_select_db($connection, 'news');
 
-$id = $_GET ['id'];
+$id = (int)$_GET ['id'];
 $result = mysqli_query($connection, "SElECT * FROM news WHERE id = '$id'");
 
 $row = mysqli_fetch_assoc($result);

@@ -10,7 +10,7 @@ $db = mysqli_select_db($connection, 'news');
 
 $id = $_GET['id'];
 
-mysqli_query($connection, "DELETE FROM news WHERE id = '$id'");
+mysqli_query($connection, "DELETE FROM news WHERE id = $id");
 
 mysqli_close($connection);
 

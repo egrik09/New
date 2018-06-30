@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head><title>Добавление новости</title></head>
+<head>
+    <title>Добавление новости</title>
+
+</head>
 <body>
 
 <form method="post" action="add.php">
 
 
     Название новсти <br />
-<input type="text" name="tittle" /><br /><br />
+<input type="text" name="tittle" required/><br /><br />
 
     Текст новости <br />
-    <textarea cols="40" rows="10" name="text"></textarea><br /><br />
-    <input type="hidden" name="date" value="<?php echo date('Y-m-d');?>" />
+    <textarea cols="40" rows="10" name="text" required></textarea><br /><br />
+    <input type="date" name="date" required />
 
     <input type="submit" name="add" value="Добавить"/>
 </form>
@@ -21,6 +24,7 @@ session_start();
 
 $connection = mysqli_connect('localhost','root','root','1234', '3308');
 $db = mysqli_select_db($connection, 'news');
+
 
 
 if(isset($_POST['add'])){

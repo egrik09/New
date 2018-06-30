@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
-<head></head>
+<head>
+
+</head>
 <body>
 
 <a href="add.php"> Добавить новости</a> </<br>
