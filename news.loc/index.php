@@ -31,5 +31,6 @@ while ($row = mysqli_fetch_array($result)) {
     <?php echo $row['date']?>
     <hr/>
 <?php } ?>
+
 </body>
 </html>

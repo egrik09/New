@@ -2,7 +2,7 @@
 #header{
 width: 900px;     - ширина
 height: 200px;    - высота
-background-color: #25B33f;  - фон
+background-color: #b34437;  - фон
 margin-bottom: 10px;    - отступ снизу
 }
 </style>
