@@ -8,7 +8,7 @@
 $connection = mysqli_connect('localhost','root','root','1234', '3308');
 $db = mysqli_select_db($connection, 'news');
 
-$id = $_GET['id'];
+$id = (int) $_GET['id'];
 
 mysqli_query($connection, "DELETE FROM news WHERE id = $id");
 

@@ -20,24 +20,20 @@
 </form>
 
 <?php
-session_start();
 
-$connection = mysqli_connect('localhost','root','root','1234', '3308');
-$db = mysqli_select_db($connection, 'news');
+include_once 'C:\MAMP\htdocs\news.loc\db.php';
 
+    if(isset($_POST['add'])){
 
+        $tittle = strip_tags(trim($_POST['tittle']));
+        $text = strip_tags(trim($_POST['text']));
+        $date = $_POST['date'];
+        $id = $_POST['id'];
+        mysqli_query ($connection,"INSERT INTO news (id, text, tittle, date) VALUES ('$id','$text','$tittle','$date')");
+        mysqli_close();
 
-if(isset($_POST['add'])){
-
-    $tittle = strip_tags(trim($_POST['tittle']));
-    $text = strip_tags(trim($_POST['text']));
-    $date = $_POST['date'];
-    $id = $_POST['id'];
-    mysqli_query ($connection,"INSERT INTO news (id, text, tittle, date) VALUES ('$id','$text','$tittle','$date')");
-    mysqli_close();
-
-    echo 'Новость успешно добавлена';
-}
+        echo 'Новость успешно добавлена';
+    }
 
 ?>
 </body>
