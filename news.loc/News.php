@@ -52,7 +52,7 @@ class News
         $this->_text = $text;
     }
 
-    /*private function cleanString($string){
+    private function cleanString($string){
         $string=strip_tags(trim($string));
         return $string;
     }
@@ -62,12 +62,12 @@ class News
         foreach ($attributes as $attribute){
             $this->{$attribute} = $this->cleanString($attribute);
         }
-    }*/
+    }
 
-    public function cleanAll(){
+    /*public function cleanAll(){
         $this->_tittle = strip_tags(trim($this->_tittle));
         $this->_text = strip_tags(trim($this->_text));
-    }
+    }*/
 }
 
 ?>

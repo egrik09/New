@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Удаление новости</title>
-</head>
-<body>
-
 <?php
     include_once 'C:\MAMP\htdocs\news.loc\db.php';
     include_once 'C:\MAMP\htdocs\news.loc\News.php';
+    include_once 'C:\MAMP\htdocs\news.loc\main.php';
 
     $news = new News();
     $news->setId($_GET['id']);
@@ -24,10 +18,8 @@
 
     <form method="post" action="delete.php">
         <input type="submit" name="delete" value="Назад" formaction="index.php"/>
+    </form>
 
-
-<form>
-</form>
 </body>
 </html>
 

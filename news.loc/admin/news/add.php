@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Добавление новости</title>
-
-</head>
-<body>
-
 <form method="post" action="add.php">
-
 
     Название новсти <br />
 <input type="text" name="tittle" required/><br /><br />
@@ -23,6 +14,7 @@
 
     include_once 'C:\MAMP\htdocs\news.loc\db.php';
     include_once 'C:\MAMP\htdocs\news.loc\News.php';
+    include_once 'C:\MAMP\htdocs\news.loc\main.php';
 
         $news = new News();
         $news->setTittle($_POST['tittle']);
@@ -45,9 +37,9 @@
         }
     ?>
 
-<form method="post" action="add.php">
-    <input type="submit" name="back" value="Назад" formaction="index.php"/>
-
+    <form method="post" action="add.php">
+        <input type="submit" name="back" value="Назад" formaction="index.php"/>
+    </form>
 
 </body>
 </html>
