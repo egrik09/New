@@ -7,17 +7,25 @@
 <?php
 session_start();
 
-$connection = mysqli_connect('localhost','root','root','1234', '3308');
-$db = mysqli_select_db($connection, 'news');
+include_once 'C:\MAMP\htdocs\news.loc\db.php';
+include_once 'C:\MAMP\htdocs\news.loc\News.php';
 
-$id = (int)$_GET ['id'];
+
+$news = new News();
+$news->setTittle($_POST['tittle']);
+$news->setText($_POST['text']);
+$news->setId($_GET['id']);
+$newsList[] = $news;
+
+
+$id = (int)$news->getId();
 $result = mysqli_query($connection, "SElECT * FROM news WHERE id = '$id'");
 
 $row = mysqli_fetch_assoc($result);
 
 if (isset($_POST['save'])){
-    $tittle = strip_tags(trim($_POST['tittle']));
-    $text = strip_tags(trim($_POST['text']));
+    $tittle = $news->getTittle();
+    $text = $news->getText();
     mysqli_query($connection, "UPDATE news SET tittle='$tittle',text='$text' WHERE id = '$id'");
 
     mysqli_close($connection);
@@ -44,6 +52,9 @@ if (isset($_POST['save'])){
     echo "Новость исправлена";
 }
 ?>
+
+<form method="post" action="edit.php">
+    <input type="submit" name="back" value="Назад" formaction="index.php"/>
 
 </body>
 </html>

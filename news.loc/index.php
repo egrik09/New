@@ -1,13 +1,14 @@
- <div class = "container">
+    <div class = "container">
         <div id="header">
             <h1>Новостная лента<h1>
         </div>
-        <div class="row">
+        <div class='row'>
             <div class="col-md-10">
                 <?php
 
                     include_once 'main.php';
                     include_once 'db.php';
+                    include_once 'News.php';
 
                     $query = 'SELECT * FROM news ORDER BY id DESC';
                     $result = mysqli_query($connection, $query);
@@ -15,15 +16,24 @@
 
                     mysqli_close($connection);
 
+
+                    $newsList = [];
                     while ($row = mysqli_fetch_array($result)) {
-                        ?>
-                        <h1><?php echo '<a href="detail.php?id=' .$row['id']. '">';?></h1>
-                        <?php echo $row['tittle'] . '<br>';?>
-                        <?php echo $row['date']?>
-                        <hr/>
-                    <?php } ?>
+                        $news = new News();
+                        $news->setTittle($row['tittle']);
+                        $news->setDate($row['date']);
+                        $news->setId($row['id']);
+                        $newsList[] = $news;
+                    }
+
+                    foreach ($newsList as $news) {
+                        echo '<a href="detail.php?id=' .$news->getid().'">';
+                        echo $news->getTittle() . '<br>';
+                        echo $news->getDate() . '<br>';
+                    }
+                    ?>
             </div>
         </div>
-    </div>
+     </div>
 </body>
 </html>

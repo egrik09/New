@@ -14,6 +14,7 @@
 
         include_once 'C:\MAMP\htdocs\news.loc\db.php';
         include_once 'C:\MAMP\htdocs\news.loc\main.php';
+        include_once 'C:\MAMP\htdocs\news.loc\News.php';
 
         $select1 = mysqli_query($connection,"SELECT COUNT(*) FROM news");
         if (!$select1) die('error for count'.mysqli_error());
@@ -22,13 +23,22 @@
 
         $result = mysqli_query($connection, "SELECT * FROM news ORDER BY id DESC LIMIT 5");
 
-        if (!$_GET){
+        $newsList = [];
         while ($row = mysqli_fetch_array($result)) {
+            $news = new News();
+            $news->setTittle($row['tittle']);
+            $news->setText($row['text']);
+            $news->setId($row['id']);
+            $newsList[] = $news;
+        }
+
+        if (!$_GET){
+            foreach ($newsList as $news) {
         ?>
-            <h1><?php echo $row['tittle'] . '<br>';?></h1>
-            <?php echo $row ['text'];?> </br>
-            <a href = 'edit.php?id=<?php echo $row['id']?>'>Редактировать новость</a></br>
-            <a href = 'delete.php?id=<?php echo $row['id']?>'>Удалить новость</a>
+            <h1><?php echo $news->getTittle() . '<br>';?></h1>
+            <?php echo $news->getText()?> </br>
+            <a href = 'edit.php?id=<?php echo $news->getId()?>'>Редактировать новость</a></br>
+            <a href = 'delete.php?id=<?php echo $news->getId()?>'>Удалить новость</a>
             <hr/>
         <?php } ?>
             <?php
@@ -44,16 +54,14 @@
                 $result = mysqli_query($connection,"SELECT * FROM news ORDER BY id DESC LIMIT $page, 5");
                 if (!$result) die('error for count' . mysqli_error());
 
-                while ($row = mysqli_fetch_array($result)){
+                foreach ($newsList as $news){
                     ?>
-                    <h1><?php echo $row['tittle'] . '<br>';?></h1>
-                    <?php echo $row ['text']; ?> </br>
-                    <a href='edit.php?id=<?php echo $row['id']; ?>'>Редактировать новость</a>
-                    <a href='delete.php?id=<?php echo $row['id']; ?>'>Удалить новость</a>
+                    <h1><?php echo $news->getTittle() . '<br>';?></h1>
+                    <?php echo $news->getText(); ?> </br>
+                    <a href='edit.php?id=<?php echo $news->getId(); ?>'>Редактировать новость</a>
+                    <a href='delete.php?id=<?php echo $news->getId(); ?>'>Удалить новость</a>
                     <hr/>
-
-                <?php }
-                ?>
+                <?php } ?>
                 <?php
                 echo "Page: <a href='index.php'> 1 </a>";
                 for ($i=5, $ii=2; $i<$count_post; $i=$i+5, $ii++){

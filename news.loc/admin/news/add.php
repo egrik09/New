@@ -19,22 +19,35 @@
     <input type="submit" name="add" value="Добавить"/>
 </form>
 
-<?php
+    <?php
 
-include_once 'C:\MAMP\htdocs\news.loc\db.php';
+    include_once 'C:\MAMP\htdocs\news.loc\db.php';
+    include_once 'C:\MAMP\htdocs\news.loc\News.php';
 
-    if(isset($_POST['add'])){
+        $news = new News();
+        $news->setTittle($_POST['tittle']);
+        $news->setText($_POST['text']);
+        $news->setDate($_POST['date']);
+        $news->setId($_POST['id']);
+        $newsList[] = $news;
 
-        $tittle = strip_tags(trim($_POST['tittle']));
-        $text = strip_tags(trim($_POST['text']));
-        $date = $_POST['date'];
-        $id = $_POST['id'];
-        mysqli_query ($connection,"INSERT INTO news (id, text, tittle, date) VALUES ('$id','$text','$tittle','$date')");
-        mysqli_close();
+        if(isset($_POST['add'])){
 
-        echo 'Новость успешно добавлена';
-    }
+            $tittle = $news->getTittle();
+            $text = $news->getText();
+            $date = $news->getDate();
+            $id = $news->getId();
+            mysqli_query ($connection,"INSERT INTO news (id, text, tittle, date) VALUES ('$id','$text','$tittle','$date')");
+            mysqli_close();
 
-?>
+            echo 'Новость успешно добавлена';
+
+        }
+    ?>
+
+<form method="post" action="add.php">
+    <input type="submit" name="back" value="Назад" formaction="index.php"/>
+
+
 </body>
 </html>
