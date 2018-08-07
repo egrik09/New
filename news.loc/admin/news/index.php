@@ -16,16 +16,17 @@
 
         $result = mysqli_query($connection, "SELECT * FROM news ORDER BY id DESC LIMIT 5");
 
-        $newsList = [];
-        while ($row = mysqli_fetch_array($result)) {
-            $news = new News();
-            $news->setTittle($row['tittle']);
-            $news->setText($row['text']);
-            $news->setId($row['id']);
-            $newsList[] = $news;
-        }
-
         if (!$_GET){
+
+            $newsList = [];
+            while ($row = mysqli_fetch_array($result)) {
+                $news = new News();
+                $news->setTittle($row['tittle']);
+                $news->setText($row['text']);
+                $news->setId($row['id']);
+                $newsList[] = $news;
+            }
+
             foreach ($newsList as $news) {
         ?>
             <h1><?php echo $news->getTittle() . '<br>';?></h1>
@@ -47,11 +48,20 @@
                 $result = mysqli_query($connection,"SELECT * FROM news ORDER BY id DESC LIMIT $page, 5");
                 if (!$result) die('error for count' . mysqli_error());
 
+                $newsList = [];
+                while ($row = mysqli_fetch_array($result)) {
+                    $news = new News();
+                    $news->setTittle($row['tittle']);
+                    $news->setText($row['text']);
+                    $news->setId($row['id']);
+                    $newsList[] = $news;
+                }
+
                 foreach ($newsList as $news){
                     ?>
                     <h1><?php echo $news->getTittle() . '<br>';?></h1>
                     <?php echo $news->getText(); ?> </br>
-                    <a href='edit.php?id=<?php echo $news->getId(); ?>'>Редактировать новость</a>
+                    <a href='edit.php?id=<?php echo $news->getId(); ?>'>Редактировать новость</a></br>
                     <a href='delete.php?id=<?php echo $news->getId(); ?>'>Удалить новость</a>
                     <hr/>
                 <?php } ?>
