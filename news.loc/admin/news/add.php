@@ -12,8 +12,10 @@
 
     <?php
 
+    $nickname = "Добавить новости";
+
     include_once 'C:\MAMP\htdocs\news.loc\db.php';
-    include_once 'C:\MAMP\htdocs\news.loc\News.php';
+    include_once 'C:\MAMP\htdocs\news.loc\models\news.php';
     include_once 'C:\MAMP\htdocs\news.loc\main.php';
 
         $news = new News();
@@ -22,6 +24,7 @@
         $news->setDate($_POST['date']);
         $news->setId($_POST['id']);
         $newsList[] = $news;
+        $news->cleanAll();
 
         if(isset($_POST['add'])){
 

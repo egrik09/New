@@ -1,8 +1,11 @@
     <?php
+
+    $nickname = "Редактировать новости";
+
     session_start();
 
     include_once 'C:\MAMP\htdocs\news.loc\db.php';
-    include_once 'C:\MAMP\htdocs\news.loc\News.php';
+    include_once 'C:\MAMP\htdocs\news.loc\models\news.php';
     include_once 'C:\MAMP\htdocs\news.loc\main.php';
 
 
@@ -11,7 +14,7 @@
     $news->setText($_POST['text']);
     $news->setId($_GET['id']);
     $newsList[] = $news;
-
+    $news->cleanAll();
 
     $id = (int)$news->getId();
     $result = mysqli_query($connection, "SElECT * FROM news WHERE id = '$id'");

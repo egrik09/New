@@ -6,9 +6,12 @@
             <div class="col-md-10">
                 <?php
 
+                    $nickname = "Новости";
+
                     include_once 'main.php';
                     include_once 'db.php';
-                    include_once 'News.php';
+                    include_once 'models\news.php';
+                    include_once 'models\ValidateTrait.php';
 
                     $query = 'SELECT * FROM news ORDER BY id DESC';
                     $result = mysqli_query($connection, $query);
@@ -25,6 +28,10 @@
                         $news->setId($row['id']);
                         $newsList[] = $news;
                     }
+//
+//                    $test = new News();
+//                    $test->testT();
+//                    echo $test;
 
                     foreach ($newsList as $news) {
                         echo '<a href="detail.php?id=' .$news->getid().'">';

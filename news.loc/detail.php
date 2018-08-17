@@ -5,6 +5,7 @@
 
                 include_once 'main.php';
                 include_once 'db.php';
+                include_once 'models\news.php';
 
                 $id = (int)$_GET['id'];
                 $query = "SELECT * FROM news WHERE id = $id";

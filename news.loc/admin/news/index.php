@@ -5,9 +5,11 @@
         <a href="add.php"> Добавить новости </a></<br>
         <?php
 
+        $nickname = "Админка";
+
         include_once 'C:\MAMP\htdocs\news.loc\db.php';
         include_once 'C:\MAMP\htdocs\news.loc\main.php';
-        include_once 'C:\MAMP\htdocs\news.loc\News.php';
+        include_once 'C:\MAMP\htdocs\news.loc\models\News.php';
 
         $select1 = mysqli_query($connection,"SELECT COUNT(*) FROM news");
         if (!$select1) die('error for count'.mysqli_error());
@@ -24,6 +26,7 @@
                 $news->setTittle($row['tittle']);
                 $news->setText($row['text']);
                 $news->setId($row['id']);
+                $news->cleanAll();
                 $newsList[] = $news;
             }
 
@@ -55,6 +58,7 @@
                     $news->setText($row['text']);
                     $news->setId($row['id']);
                     $newsList[] = $news;
+                    $news->cleanAll();
                 }
 
                 foreach ($newsList as $news){

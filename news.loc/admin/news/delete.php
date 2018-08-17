@@ -1,6 +1,6 @@
 <?php
     include_once 'C:\MAMP\htdocs\news.loc\db.php';
-    include_once 'C:\MAMP\htdocs\news.loc\News.php';
+    include_once 'C:\MAMP\htdocs\news.loc\models\news.php';
     include_once 'C:\MAMP\htdocs\news.loc\main.php';
 
     $news = new News();
