@@ -10,7 +10,7 @@
 
                     include_once 'main.php';
                     include_once 'db.php';
-                    include_once 'models\news.php';
+                    include_once 'models\News.php';
                     include_once 'models\ValidateTrait.php';
 
                     $query = 'SELECT * FROM news ORDER BY id DESC';

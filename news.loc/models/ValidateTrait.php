@@ -1,6 +1,6 @@
 <?php
 
-namespace Validate;
+namespace models;
 
 trait ValidateTrait
 {
@@ -26,13 +26,13 @@ trait ValidateTrait
 
     }
 
-    /*public function cleanAll(){
-
-        $this->_text = strip_tags(trim($this->_text));
-
-        $this->_tittle = strip_tags(trim($this->_tittle));
-
-    }*/
+//    public function cleanAll(){
+//
+//        $this->_text = strip_tags(trim($this->_text));
+//
+//        $this->_tittle = strip_tags(trim($this->_tittle));
+//
+//    }
 
 //    public function cleanAll(){
 //
