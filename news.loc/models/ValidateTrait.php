@@ -4,6 +4,10 @@ namespace Validate;
 
 trait ValidateTrait
 {
+    /**
+     * @param $string
+     * @return string
+     */
     private function cleanString($string)
     {
         $string = strip_tags(trim($string));
@@ -11,7 +15,9 @@ trait ValidateTrait
         return $string;
     }
 
-
+    /**
+     *
+     */
     public function cleanAll()
     {
 
