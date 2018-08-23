@@ -5,7 +5,7 @@ namespace models;
 trait ValidateTrait
 {
     /**
-     * @param $string
+     * @param void $string
      * @return string
      */
     private function cleanString($string)
@@ -16,7 +16,7 @@ trait ValidateTrait
     }
 
     /**
-     *
+     * @return void
      */
     public function cleanAll()
     {

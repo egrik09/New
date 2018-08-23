@@ -15,8 +15,8 @@
     $nickname = "Добавить новости";
 
     include_once 'C:\MAMP\htdocs\news.loc\db.php';
-    include_once 'C:\MAMP\htdocs\news.loc\models\news.php';
-    include_once 'C:\MAMP\htdocs\news.loc\main.php';
+    include_once 'C:\MAMP\htdocs\news.loc\models\News.php';
+    include_once 'C:\MAMP\htdocs\news.loc\template.php';
 
         $news = new News();
         $news->setTittle($_POST['tittle']);
@@ -43,6 +43,3 @@
     <form method="post" action="add.php">
         <input type="submit" name="back" value="Назад" formaction="index.php"/>
     </form>
-
-</body>
-</html>

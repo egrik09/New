@@ -3,9 +3,9 @@
             <div class="col-md-12">
                 <?php
 
-                include_once 'main.php';
+                include_once 'template.php';
                 include_once 'db.php';
-                include_once 'models\news.php';
+                include_once 'models\News.php';
 
                 $id = (int)$_GET['id'];
                 $query = "SELECT * FROM news WHERE id = $id";
@@ -23,6 +23,5 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+
 

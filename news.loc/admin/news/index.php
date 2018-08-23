@@ -8,7 +8,7 @@
         $nickname = "Админка";
 
         include_once 'C:\MAMP\htdocs\news.loc\db.php';
-        include_once 'C:\MAMP\htdocs\news.loc\main.php';
+        include_once 'C:\MAMP\htdocs\news.loc\template.php';
         include_once 'C:\MAMP\htdocs\news.loc\models\News.php';
 
         $select1 = mysqli_query($connection,"SELECT COUNT(*) FROM news");
@@ -79,5 +79,3 @@
         </div>
     </div>
 </div>
-</body>
-</html>

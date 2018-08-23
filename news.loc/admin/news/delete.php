@@ -1,7 +1,7 @@
 <?php
     include_once 'C:\MAMP\htdocs\news.loc\db.php';
-    include_once 'C:\MAMP\htdocs\news.loc\models\news.php';
-    include_once 'C:\MAMP\htdocs\news.loc\main.php';
+    include_once 'C:\MAMP\htdocs\news.loc\models\News.php';
+    include_once 'C:\MAMP\htdocs\news.loc\template.php';
 
     $news = new News();
     $news->setId($_GET['id']);
@@ -19,7 +19,4 @@
     <form method="post" action="delete.php">
         <input type="submit" name="delete" value="Назад" formaction="index.php"/>
     </form>
-
-</body>
-</html>
 

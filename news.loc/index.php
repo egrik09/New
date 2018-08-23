@@ -8,7 +8,7 @@
 
                     $nickname = "Новости";
 
-                    include_once 'main.php';
+                    include_once 'template.php';
                     include_once 'db.php';
                     include_once 'models\News.php';
                     include_once 'models\ValidateTrait.php';
@@ -42,5 +42,3 @@
             </div>
         </div>
      </div>
-</body>
-</html>
